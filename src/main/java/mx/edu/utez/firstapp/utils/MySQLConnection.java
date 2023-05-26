@@ -1,4 +1,4 @@
-package mx.edu.utez.firstapp;
+package mx.edu.utez.firstapp.utils;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

@@ -5,7 +5,10 @@
   <title>Usuarios</title>
 <jsp:include page="./layouts/head.jsp" />
 </head>
-<body>
+<bod
+
+
+>
 <div class="container-fluid">
   <div class="row">
     <div class="col text-center mt-5">
@@ -31,7 +34,6 @@
             </thead>
             <thbody>
               <tr>
-                <h1>pase cp</h1>
                 <td></td>
                 <td></td>
                 <td></td>
@@ -50,5 +52,5 @@
 <br/>
 <a href="hello-servlet">Hello Servlet</a>
 <jsp:include page="./layouts/head.jsp"/>
-</body>
+</bod>
 </html>

@@ -12,13 +12,13 @@
       <h2>Usarios</h2>
       <p>Practica 1 Srvelets para realizar un CRUD de usuarios</p>
       <div class="card">
-        <div class="header">
+        <div class="card-header">
           <div class="col">Listado de usuarios</div>
           <div class="col">
             <button class="btn btn-outline-success btn-sm">Agregar</button>
           </div>
         </div>
-        <div class="body">
+        <div class="card-body">
           <table class="table table-striped">
             <thead>
               <th>#</th>
@@ -31,6 +31,7 @@
             </thead>
             <thbody>
               <tr>
+                <h1>pase cp</h1>
                 <td></td>
                 <td></td>
                 <td></td>

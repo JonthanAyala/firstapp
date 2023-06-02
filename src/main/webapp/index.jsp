@@ -14,7 +14,7 @@
     </div>
   </div>
 
-  <a href="hello-servlet">Hello Servlet</a>
+
   <jsp:include page="./layouts/head.jsp"/>
 </bod>
 </html>

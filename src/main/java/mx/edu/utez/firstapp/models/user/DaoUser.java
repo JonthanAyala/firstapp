@@ -23,7 +23,6 @@ public class DaoUser implements DaoRepository<User>{
     public List<User> findAll() {
         List<User> users = new ArrayList<>();
         try {
-
          conn = new MySQLConnection().connect();
          String query = "SELECT * from users;";
          pstm = conn.prepareStatement(query);
@@ -39,7 +38,6 @@ public class DaoUser implements DaoRepository<User>{
              user.setStatus(rs.getString("status"));
              users.add(user);
          }
-
         }catch (SQLException e){
             Logger.getLogger(DaoUser.class.getName()).log(Level.SEVERE, "Error findAll"+e.getMessage());
         }finally {
@@ -50,21 +48,90 @@ public class DaoUser implements DaoRepository<User>{
 
     @Override
     public User findOne(long id) {
+        try {
+            conn = new MySQLConnection().connect();
+            String query = "SELECT * from users where id = ?;";
+            pstm = conn.prepareStatement(query);
+            pstm.setLong(1,id);
+            rs = pstm.executeQuery();
+            User user = new User();
+            if (rs.next()){
+                user.setId(rs.getLong("id"));
+                user.setName(rs.getString("name"));
+                user.setLastname(rs.getString("lastname"));
+                user.setSurname(rs.getString("surname"));
+                user.setUsername(rs.getString("username"));
+                user.setBirthday(rs.getString("birthday"));
+                user.setStatus(rs.getString("status"));
+            }
+            return user;
+        }catch (SQLException e){
+            Logger.getLogger(DaoUser.class.getName()).log(Level.SEVERE, "Error findAll"+e.getMessage());
+        }finally {
+            close();
+        }
         return null;
     }
 
     @Override
     public boolean save(User object) {
+        try {
+            conn = new MySQLConnection().connect();
+            String query = "insert into users (name, surname, lastname, username, birthday, status) Values (?,?,?,?,?,?);";
+            pstm = conn.prepareStatement(query);
+            pstm.setString(1,object.getName());
+            pstm.setString(2,object.getSurname());
+            pstm.setString(3, object.getLastname());
+            pstm.setString(4,object.getUsername());
+            pstm.setString(5, object.getBirthday());
+            pstm.setString(6,object.getStatus());
+            return pstm.executeUpdate() > 0; // == 1
+
+        }catch (SQLException e){
+            Logger.getLogger(DaoUser.class.getName()).log(Level.SEVERE,"Error save"+e.getMessage());
+        }finally {
+            close();
+        }
         return false;
     }
 
     @Override
     public boolean update(User object) {
+        try {
+            conn = new MySQLConnection().connect();
+            String query = "UPDATE users set name = ?, surname = ?, lastname = ?, username = ?, birthday = ?, status = ?, status = ? where id = ?";
+
+            pstm = conn.prepareStatement(query);
+            pstm.setString(1,object.getName());
+            pstm.setString(2,object.getSurname());
+            pstm.setString(3, object.getLastname());
+            pstm.setString(4,object.getUsername());
+            pstm.setString(5,object.getBirthday());
+            pstm.setString(6,object.getStatus());
+            pstm.setString(7,object.getId());
+            return pstm.executeUpdate() > 0; // == 1
+
+        }catch (SQLException e){
+            Logger.getLogger(DaoUser.class.getName()).log(Level.SEVERE,"Error save"+e.getMessage());
+        }finally {
+            close();
+        }
         return false;
     }
 
     @Override
     public boolean delete(Long id) {
+        try {
+            conn = new MySQLConnection().connect();
+            String query = "DELETE users where id = ?";
+            pstm = conn.prepareStatement(query);
+            pstm.setLong(1,id);
+            return  pstm.executeUpdate() == 1;
+        }catch (SQLException e){
+            Logger.getLogger(DaoUser.class.getName()).log(Level.SEVERE, "Error delete"+e.getMessage());
+        }finally {
+            close();
+        }
         return false;
     }
 

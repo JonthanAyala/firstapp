@@ -7,10 +7,7 @@
   <title>Usuarios</title>
   <jsp:include page="../../layouts/head.jsp" />
 </head>
-<bod
-
-
->
+<body>
   <div class="container-fluid">
     <div class="row">
       <div class="col text-center mt-5">
@@ -68,10 +65,6 @@
       </div>
     </div>
   </div>
-
-  <h1><%= "Hello World!" %></h1>
-  <br/>
-  <a href="hello-servlet">Hello Servlet</a>
   <jsp:include page="../../layouts/head.jsp"/>
-</bod>
+</body>
 </html>

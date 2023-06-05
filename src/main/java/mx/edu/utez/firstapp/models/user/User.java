@@ -1,8 +1,5 @@
 package mx.edu.utez.firstapp.models.user;
 
-import java.io.PrintWriter;
-import java.security.PrivateKey;
-
 public class User {
     private Long id;
     private  String name;
@@ -25,7 +22,7 @@ public class User {
         this.status = status;
     }
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
 

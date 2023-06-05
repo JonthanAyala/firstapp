@@ -84,7 +84,7 @@ public class ServletUser extends HttpServlet {
 
                 }else {
                     redirect = "/user/users?result="+result+"&message="+ URLEncoder.encode("Error accion no realizada correctamente.", StandardCharsets.UTF_8);
-                    
+
                 }
                 break;
             default:

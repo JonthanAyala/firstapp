@@ -23,7 +23,7 @@ public class User {
     }
 
     public String getId() {
-        return id;
+        return String.valueOf(id);
     }
 
     public void setId(Long id) {

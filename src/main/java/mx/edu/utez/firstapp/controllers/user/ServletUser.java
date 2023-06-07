@@ -40,7 +40,7 @@ public class ServletUser extends HttpServlet {
                 redirect = "/views/user/index.jsp";
 
                 break;
-            case "/user/users-view":
+            case "/user/user-view":
                 //Consultas catalogos
                 redirect = "/views/user/create.jsp";
                 break;
@@ -52,7 +52,6 @@ public class ServletUser extends HttpServlet {
         }
         req.getRequestDispatcher(redirect).forward(req, resp);
     }
-
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setCharacterEncoding("UTF-8");
@@ -77,7 +76,7 @@ public class ServletUser extends HttpServlet {
                 username = req.getParameter("username");
                 birthday = req.getParameter("birthday");
                 status = req.getParameter("status");
-                User user1 = new User(0, name, surname, lastname, birthday, username, status);
+                User user1 = new User(0L, name, surname, lastname, birthday, username, status);
                 boolean result = new DaoUser().save(user1);
                 if (result){
                     redirect = "/user/users?result="+result+"&message="+ URLEncoder.encode("¡Exito! Usuario registrado correctamente.", StandardCharsets.UTF_8);

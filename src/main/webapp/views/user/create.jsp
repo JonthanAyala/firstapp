@@ -14,8 +14,9 @@
             <div class="card mt-5">
                 <div class="card-header">Registro de usuario</div>
                 <div class="card-body">
-                    <form id="user-form" action="user/save" class="needs-validation" novalidate method="post">
+                    <form id="user-form" class="needs-validation" novalidate action="/user/save" method="post">
                         <div class="form-group mb-3">
+                            <div class="row">
                             <div class="col">
                                 <label for="name" class="fw-bold">Nombre:</label>
                                 <input type="text" name="name" id="name" class="form-control" required/>
@@ -31,8 +32,9 @@
                                 <input type="text" name="lastname" id="lastname" class="form-control" required/>
                                 <div class="invalid-feedback">Campo Obligatorio</div>
                             </div>
+                            </div>
                         </div>
-                        <div class="form-goup mb-3">
+                        <div class="form-group mb-3">
                             <div class="row">
                                 <div class="col">
                                     <label for="birthday" class="fw-bold">Nombre:</label>
@@ -52,9 +54,9 @@
                                     <a href="user/users" class="btn btn-outline-danger btn-sm">
                                         CANCELAR
                                     </a>
-                                    <buttom type="submit" class="btn btn-outline success btn-sm">
+                                    <button type="submit" class="btn btn-outline-success btn-sm">
                                         ACEPTAR
-                                    </buttom>
+                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -63,7 +65,6 @@
             </div>
         </div>
     </div>
-
 </div>
 <jsp:include page="../../layouts/footer.jsp"/>
 <script>

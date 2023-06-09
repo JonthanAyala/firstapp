@@ -4,7 +4,7 @@ import java.util.List;
 
 public interface DaoRepository <T>{
     List<T> findAll();
- 
+
     T findOne(long id);
 
     boolean save(T object);

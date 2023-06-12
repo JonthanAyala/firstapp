@@ -51,6 +51,12 @@
                       <c:out value="${user.status}"/>
                     </td>
                     <td>
+                      <form method="post" action="/user/user-view-update">
+                        <input hidden value="${user.id}" name="id">
+                        <button type="submit" class="btn btn-outline-warning btn-sm">
+                          Editar
+                        </button>
+                      </form>
                     </td>
                   </tr>
                 </c:forEach>

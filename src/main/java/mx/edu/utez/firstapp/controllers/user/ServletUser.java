@@ -47,13 +47,14 @@ public class ServletUser extends HttpServlet {
                 redirect = "/views/user/create.jsp";
                 break;
             case "/user/user-view-update":
-                id = req.getParameter("id");
-                User user4 = new DaoUser().findOne(id != null ? Long.parseLong(id):0);
-                if (user4 != null){
-                    req.setAttribute("user",user4);
-                    redirect="/views/user/update.jsp";
-                }else{
-                    redirect = "user/users?/result"+false+"&message="+URLEncoder.encode("",StandardCharsets.UTF_8);
+                id= req.getParameter("id");
+                User user3 = new DaoUser().findOne(id != null ? Long.parseLong(id):0);
+                if(user3 !=null){
+                    req.setAttribute("user",user3);
+                    redirect = "/views/user/update.jsp";
+                }else {
+                    redirect = "/user/users?result" + false +
+                            "&messages" + URLEncoder.encode("", StandardCharsets.UTF_8);
                 }
                 break;
                 default:
@@ -68,16 +69,6 @@ public class ServletUser extends HttpServlet {
         resp.setContentType("text/html");
         action = req.getServletPath();
         switch (action){
-            case "/user/user-view-update":
-                String id = req.getParameter("id");
-                User user = new DaoUser().findOne(id != null ? Long.parseLong(id): 0);
-                if (user != null){
-                    req.setAttribute("user", user);
-                    redirect = "/views/user/update.jsp";
-                }else {
-                    redirect = "/user/users";
-                }
-                break;
             case "/user/save":
                 name = req.getParameter("name");
                 surname = req.getParameter("surname");
@@ -93,6 +84,16 @@ public class ServletUser extends HttpServlet {
                 }else {
                     redirect = "/user/users?result="+result+"&message="+ URLEncoder.encode("Error accion no realizada correctamente.", StandardCharsets.UTF_8);
 
+                }
+                break;
+            case "/user/user-view-update":
+                String id = req.getParameter("id");
+                User user = new DaoUser().findOne(id != null ? Long.parseLong(id): 0);
+                if (user != null){
+                    req.setAttribute("user", user);
+                    redirect = "/views/user/update.jsp";
+                }else {
+                    redirect = "/user/users";
                 }
                 break;
             default:

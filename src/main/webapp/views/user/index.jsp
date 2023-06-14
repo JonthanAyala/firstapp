@@ -51,10 +51,16 @@
                       <c:out value="${user.status}"/>
                     </td>
                     <td>
-                      <form method="post" action="/user/user-view-update">
+                      <form method="get" action="/user/user-view-update">
                         <input hidden value="${user.id}" name="id">
                         <button type="submit" class="btn btn-outline-warning btn-sm">
                           Editar
+                        </button>
+                      </form>
+                      <form method="post" action="/user/delete">
+                        <input hidden value="${user.id}" name="id">
+                        <button type="submit" class="btn btn-outline-danger btn-sm">
+                          Eliminar
                         </button>
                       </form>
                     </td>
